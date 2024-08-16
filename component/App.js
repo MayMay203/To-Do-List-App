@@ -11,7 +11,7 @@ function App({todos}) {
        <section class="todoapp">
             ${Header()}
             ${ todos.length > 0 && TodoList()}
-           ${todos.length > 0 && Footer()}
+            ${todos.length > 0 && Footer()}
        </section>
     `
 }
