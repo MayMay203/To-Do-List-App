@@ -1,18 +1,16 @@
+import storage from './util/storage.js'
 const init = {
-    cars: ['BMW'],
+    todos: storage.get()
+}
+
+const actions = {
+    add({todos}, title) {
+        todos.push({ title, completed: false })
+        storage.set(todos)
+    }
 }
 
 export default function reducer(state = init, action, args) {
-    console.log(action, args)
-    switch (action) {
-        case 'ADD':
-            const [newCar] = args
-            return {
-                ...state,
-                cars: [...state.cars, newCar]
-            }
-            break;
-        default:
-            return state
-    }
+    actions[action] && actions[action](state, args);
+    return state
 }
